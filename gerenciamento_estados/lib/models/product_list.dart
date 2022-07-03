@@ -5,10 +5,28 @@ import 'package:gerenciamento_estados/models/product.dart';
 //Essa classe é a observavel... os observadores serão notificados
 
 class ProductList with ChangeNotifier {
-  List<Product> _items = dummyProducts;
+  final List<Product> _items = dummyProducts;
+  bool _showFavoriteOnly = false;
 
-  List<Product> get items =>
-      [..._items]; //Esse [...] cria um clone da variavel chamada
+  List<Product> get items {
+    if (_showFavoriteOnly) {
+      return _items
+          .where((prod) => prod.isFavorite!)
+          .toList(); //Where funciona como um filter
+      //Se a flag _showFavoriteOnly for true, vai retornar os cards que estão com o isFAvorite true tbm
+    }
+    return [..._items]; //Esse [...] cria um clone da variavel chamada
+  }
+
+  void showFavoriteOnly() {
+    _showFavoriteOnly = true;
+    notifyListeners();
+  }
+
+  void showAll() {
+    _showFavoriteOnly = false;
+    notifyListeners();
+  }
 
   void addProduct(Product product) {
     _items.add(product);
