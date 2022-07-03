@@ -1,5 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:gerenciamento_estados/components/badge.dart';
+import 'package:gerenciamento_estados/models/cart.dart';
 import 'package:provider/provider.dart';
 import '../components/product_grid.dart';
 import '../models/product_list.dart';
@@ -52,6 +54,16 @@ class _ProductsOverViewPageState extends State<ProductsOverViewPage> {
               // }
             },
           ),
+          Consumer<Cart>(
+            child: IconButton(
+              onPressed: () {},
+              icon: const Icon(Icons.shopping_cart),
+            ),
+            builder: (ctx, cart, child) => Badge(
+              value: cart.itemsCount.toString(),
+            child: child,
+            ),
+          )
         ],
         title: const Center(
           child: Text('Minha Tela'),

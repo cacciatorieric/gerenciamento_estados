@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gerenciamento_estados/models/cart.dart';
 import 'package:gerenciamento_estados/models/product_list.dart';
 import 'package:gerenciamento_estados/pages/counter_page.dart';
 import 'package:gerenciamento_estados/pages/product_detail_page.dart';
@@ -14,15 +15,20 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      //O aplicativo está envolvido com o changenotifierprovider 
-      create: (_) => ProductList(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (_) => ProductList(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => Cart(),
+        ),
+      ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        title: 'Flutter Demo',
+        title: 'Gerenciamento de Estados',
         theme: ThemeData(
           primarySwatch: Colors.deepOrange,
         ),

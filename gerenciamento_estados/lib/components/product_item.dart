@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gerenciamento_estados/models/cart.dart';
 import 'package:gerenciamento_estados/models/product.dart';
 import 'package:gerenciamento_estados/utils/app_routes.dart';
 import 'package:provider/provider.dart';
@@ -6,10 +7,15 @@ import 'package:provider/provider.dart';
 class ProductItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final Product product = Provider.of(
+    final product = Provider.of<Product>(
       context,
       listen: false,
     );
+
+    final cart = Provider.of<Cart>(
+      context,
+    );
+
     /****** ALTERNARIVA PARA A LINHA DE CIMA *****/
     //Utilizar o widget consumer diretamente no item que vai ser modificado para a tela renderizar apenas ele
 
@@ -30,7 +36,15 @@ class ProductItem extends StatelessWidget {
             ),
           ),
           title: Text(product.name!),
-          trailing: const Icon(Icons.shopping_cart),
+          trailing: IconButton(
+            icon: const Icon(
+              Icons.shopping_cart,
+            ),
+            onPressed: () {
+              cart.addItem(product);
+              //debugPrint(cart.itemsCount.toString());
+            },
+          ),
         ),
         child: GestureDetector(
           child: Image.network(
