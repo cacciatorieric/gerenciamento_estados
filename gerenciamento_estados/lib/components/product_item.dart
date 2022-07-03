@@ -29,7 +29,7 @@ class ProductItem extends StatelessWidget {
                   color: Colors.red),
             ),
           ),
-          title: Text(product.title!),
+          title: Text(product.name!),
           trailing: const Icon(Icons.shopping_cart),
         ),
         child: GestureDetector(
