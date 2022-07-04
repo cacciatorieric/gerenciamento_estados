@@ -11,29 +11,36 @@ class CartPage extends StatelessWidget {
     final Cart cart = Provider.of(context);
     final items = cart.itens.values.toList();
     return Scaffold(
+      backgroundColor: Theme.of(context).colorScheme.background,
       appBar: AppBar(
         title: const Text('Carrinho'),
       ),
       body: Column(
         children: [
           Card(
-            margin: const EdgeInsets.all(25),
+            color: Theme.of(context).colorScheme.primary,
+            margin: const EdgeInsets.symmetric(
+              horizontal: 15,
+              vertical: 25,
+            ),
             child: Padding(
               padding: const EdgeInsets.all(12),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Text(
+                  Text(
                     'Total',
-                    style: TextStyle(fontSize: 20),
+                    style: TextStyle(
+                        fontSize: 20,
+                        color: Theme.of(context).colorScheme.secondary),
                   ),
                   const SizedBox(width: 10),
                   Chip(
-                    backgroundColor: Theme.of(context).colorScheme.primary,
+                    backgroundColor: Theme.of(context).colorScheme.secondary,
                     label: Text(
                       'R\$: ${cart.totalAmount!.toStringAsFixed(2)}',
                       style: TextStyle(
-                        color: Theme.of(context).colorScheme.secondary,
+                        color: Theme.of(context).colorScheme.primary,
                       ),
                     ),
                   ),
@@ -41,10 +48,11 @@ class CartPage extends StatelessWidget {
                   TextButton(
                     onPressed: () {},
                     style: TextButton.styleFrom(
-                      textStyle: TextStyle(
-                          color: Theme.of(context).colorScheme.primary),
+                      primary: Theme.of(context).colorScheme.secondary,
                     ),
-                    child: const Text('COMPRAR'),
+                    child: const Text(
+                      'COMPRAR',
+                    ),
                   ),
                 ],
               ),
