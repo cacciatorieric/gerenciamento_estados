@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:gerenciamento_estados/models/cart.dart';
 import 'package:gerenciamento_estados/models/product_list.dart';
-import 'package:gerenciamento_estados/pages/counter_page.dart';
+import 'package:gerenciamento_estados/pages/cart_page.dart';
 import 'package:gerenciamento_estados/pages/product_detail_page.dart';
 import 'package:gerenciamento_estados/pages/products_overview_page.dart';
-import 'package:gerenciamento_estados/providers/counter.dart';
 import 'package:gerenciamento_estados/utils/app_routes.dart';
 import 'package:provider/provider.dart';
 
@@ -30,10 +29,17 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'Gerenciamento de Estados',
         theme: ThemeData(
-          primarySwatch: Colors.deepOrange,
+          colorScheme: const ColorScheme.light(
+            primary: Colors.deepOrange,
+            secondary: Colors.white,
+          ),
+          
         ),
         home: ProductsOverViewPage(),
-        routes: {AppRoutes.PRODUCT_DETAIL: (ctx) => const CounterPage()},
+        routes: {
+          AppRoutes.PRODUCT_DETAIL: (ctx) => const ProductDetailPage(),
+          AppRoutes.CART: (ctx) => const CartPage(),
+        },
       ),
     );
   }
