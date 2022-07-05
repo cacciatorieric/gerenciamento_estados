@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gerenciamento_estados/models/cart.dart';
+import 'package:gerenciamento_estados/models/order_list.dart';
 import 'package:gerenciamento_estados/models/product_list.dart';
 import 'package:gerenciamento_estados/pages/cart_page.dart';
 import 'package:gerenciamento_estados/pages/product_detail_page.dart';
@@ -24,17 +25,18 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (_) => Cart(),
         ),
+        ChangeNotifierProvider(
+          create: (_) => OrderList(),
+        ),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Gerenciamento de Estados',
         theme: ThemeData(
           colorScheme: const ColorScheme.light(
-            primary: Colors.deepOrange,
-            secondary: Colors.white,
-            background: Color.fromARGB(255, 238, 238, 238)
-          ),
-          
+              primary: Colors.deepOrange,
+              secondary: Colors.white,
+              background: Color.fromARGB(255, 238, 238, 238)),
         ),
         home: ProductsOverViewPage(),
         routes: {
