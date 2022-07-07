@@ -3,6 +3,7 @@ import 'package:gerenciamento_estados/models/cart.dart';
 import 'package:gerenciamento_estados/models/order_list.dart';
 import 'package:gerenciamento_estados/models/product_list.dart';
 import 'package:gerenciamento_estados/pages/cart_page.dart';
+import 'package:gerenciamento_estados/pages/orders_page.dart';
 import 'package:gerenciamento_estados/pages/product_detail_page.dart';
 import 'package:gerenciamento_estados/pages/products_overview_page.dart';
 import 'package:gerenciamento_estados/utils/app_routes.dart';
@@ -38,10 +39,12 @@ class MyApp extends StatelessWidget {
               secondary: Colors.white,
               background: Color.fromARGB(255, 238, 238, 238)),
         ),
-        home: ProductsOverViewPage(),
+        //home: ProductsOverViewPage(),
         routes: {
-          AppRoutes.PRODUCT_DETAIL: (ctx) => const ProductDetailPage(),
+          AppRoutes.HOME: (ctx) => ProductsOverViewPage(),
           AppRoutes.CART: (ctx) => const CartPage(),
+          AppRoutes.PRODUCT_DETAIL: (ctx) => const ProductDetailPage(),
+          AppRoutes.ORDERS: (ctx) => const OrdersPage(),
         },
       ),
     );
